@@ -1,5 +1,8 @@
 package com.teclan.model;
 
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -39,5 +42,10 @@ public class Item {
 
 	@Field(index = false, type = FieldType.Keyword)
 	private String images; // 图片地址
+	
+	public String toString() {
+		return JSON.toJSONString(this);
+	}
+
 
 }

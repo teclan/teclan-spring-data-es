@@ -68,7 +68,9 @@ public class ESTest {
         // 对某字段排序查找所有 Sort.by("price").descending() 降序
         // Sort.by("price").ascending():升序
 		
-        Iterable<Item> list = this.itemRepository.findAll(Sort.by("price").ascending());
+//        Iterable<Item> list = this.itemRepository.findAll(Sort.by("price").ascending());
+		
+		Iterable<Item> list = this.itemRepository.findAll();
 
         for (Item item:list){
             System.out.println(item);
