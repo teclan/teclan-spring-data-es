@@ -32,6 +32,7 @@ public class ESTest {
 		elasticsearchTemplate.createIndex(Item.class);
 		// 创建索引后必须创建Mapping，否后续无法搜索
 		elasticsearchTemplate.putMapping(Item.class);
+		elasticsearchTemplate.refresh(Item.class);
 	}
 
 	@Test
@@ -43,6 +44,7 @@ public class ESTest {
 	public void testInsertDocument() {
 		Item item = new Item(1L, "小米手机7", " 手机", "小米", 3499.00, "http://image.baidu.com/13123.jpg");
 		itemRepository.save(item);
+		
 	}
 	
 	@Test
@@ -68,9 +70,7 @@ public class ESTest {
         // 对某字段排序查找所有 Sort.by("price").descending() 降序
         // Sort.by("price").ascending():升序
 		
-//        Iterable<Item> list = this.itemRepository.findAll(Sort.by("price").ascending());
-		
-		Iterable<Item> list = this.itemRepository.findAll();
+        Iterable<Item> list = this.itemRepository.findAll(Sort.by("price").ascending());
 
         for (Item item:list){
             System.out.println(item);
